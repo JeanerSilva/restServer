@@ -4,9 +4,9 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import br.com.colicon.restservice.dao.IContratoDAO;
 import br.com.colicon.restservice.entity.Contrato;
+
 @Service
 public class ContratoService implements IContratoService {
 	@Autowired

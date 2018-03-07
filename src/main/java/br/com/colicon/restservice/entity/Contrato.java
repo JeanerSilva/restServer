@@ -2,10 +2,7 @@ package br.com.colicon.restservice.entity;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
-import java.util.Calendar;
-import java.util.Date;
-
-import javax.persistence.Cacheable;
+import java.time.LocalDate;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -41,9 +38,9 @@ public class Contrato implements Serializable {
 	private BigDecimal vtotal;
 	private String fixo_estimado;
 	@Temporal(TemporalType.DATE)
-	private Date iniciovigencia;	
+	private LocalDate iniciovigencia;	
 	@Temporal(TemporalType.DATE)
-	private Date fimvigencia;
+	private LocalDate fimvigencia;
 	private String continuado;
 	private String prorrogavel;
 	private String garantia;
@@ -267,18 +264,19 @@ public class Contrato implements Serializable {
 				+ observacoes + ", situacao=" + situacao + ", empenho=" + empenho + ", termoaditivo=" + termoaditivo
 				+ ", motivo=" + motivo + ", aumentomensal=" + aumentomensal + "]";
 	}
-	public Date getIniciovigencia() {
+	public LocalDate getIniciovigencia() {
 		return iniciovigencia;
 	}
-	public void setIniciovigencia(Date iniciovigencia) {
+	public void setIniciovigencia(LocalDate iniciovigencia) {
 		this.iniciovigencia = iniciovigencia;
 	}
-	public Date getFimvigencia() {
+	public LocalDate getFimvigencia() {
 		return fimvigencia;
 	}
-	public void setFimvigencia(Date fimvigencia) {
+	public void setFimvigencia(LocalDate fimvigencia) {
 		this.fimvigencia = fimvigencia;
 	}
+
 	
 
 }

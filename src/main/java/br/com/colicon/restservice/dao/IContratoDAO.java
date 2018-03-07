@@ -1,4 +1,6 @@
 package br.com.colicon.restservice.dao;
+
+
 import java.util.List;
 
 import br.com.colicon.restservice.entity.Contrato;

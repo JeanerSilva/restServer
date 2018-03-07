@@ -80,7 +80,7 @@ public class RestClientUtil {
         restTemplate.put(url, requestEntity);
     }
     
-    public void deleteContratoDemo(Integer id) {
+    public static void deleteContratoDemo(Integer id) {
     	HttpHeaders headers = new HttpHeaders();
     	headers.setContentType(MediaType.APPLICATION_JSON);
         RestTemplate restTemplate = new RestTemplate();
@@ -90,8 +90,7 @@ public class RestClientUtil {
     }
     
     public void deleteContratoPorNumeroEAno(Integer numero, Integer ano) {
-    	RestClientUtil util = new RestClientUtil();
-    	Integer id = util.getContratoByNumeroEAno(333, 100).getContratoId();
+    	Integer id = getContratoByNumeroEAno(333, 100).getContratoId();
     	HttpHeaders headers = new HttpHeaders();
     	headers.setContentType(MediaType.APPLICATION_JSON);
         RestTemplate restTemplate = new RestTemplate();
@@ -106,17 +105,16 @@ public class RestClientUtil {
 	static EntityManager entityManager;
 	
     public static void main(String args[]) {
-    	RestClientUtil util = new RestClientUtil();
     	//System.out.println("teste");
-       // System.out.println("jeaner:" + util.getContratoByNumeroEAno(2, 2004));
-        //util.getAllContratosDemo();
-    	//System.out.println(util.addContratoDemo());
-    	//util.updateContratoDemo();
-    	//System.out.println(util.getContratoByIdDemo(2));
+       // System.out.println("jeaner:" + getContratoByNumeroEAno(2, 2004));
+        //getAllContratosDemo();
+    	//System.out.println(addContratoDemo());
+    	//updateContratoDemo();
+    	//System.out.println(getContratoByIdDemo(2));
     	//Integer c = 2759;
-    	//util.deleteContratoPorNumeroEAno(333, 100);
-    	//System.out.println(util.getContratoByIdDemo(c));
-    	util.deleteContratoDemo(57);
+    	//deleteContratoPorNumeroEAno(333, 100);
+    	//System.out.println(getContratoByIdDemo(c));
+    	deleteContratoDemo(57);
         
     }    
 }
