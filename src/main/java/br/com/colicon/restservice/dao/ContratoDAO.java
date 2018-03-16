@@ -35,7 +35,7 @@ public class ContratoDAO implements IContratoDAO {
 	@Override
 	public void updateContrato(Contrato contratoatualizado) {
 		Contrato contratonobanco = getContratoById(contratoatualizado.getContratoId());
-
+		//contratoatualizado = contratonobanco;
 		contratonobanco.setNumero (contratoatualizado.getNumero());
 		contratonobanco.setAno (contratoatualizado.getAno());
 		contratonobanco.setAta(contratoatualizado.getAta());
