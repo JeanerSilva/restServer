@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.util.UriComponentsBuilder;
 
@@ -37,10 +38,18 @@ public class ContratoController {
 		return (null == contratos) ? new ResponseEntity<List<Contrato>>(HttpStatus.EXPECTATION_FAILED): new ResponseEntity<List<Contrato>>(contratos, HttpStatus.FOUND);
 	}
 	
+	///////////////////////////////////////////
 	@GetMapping("buscacontrato/numero/{numero}/ano/{ano}")
-	public ResponseEntity<Contrato> getContratoByNumeroEAno (@PathVariable("numero") Integer numero, @PathVariable("ano") Integer ano) {
+	public ResponseEntity<Contrato> getContratoByNumeroEAno (
+			@PathVariable("numero") Integer numero, 
+			@PathVariable("ano") Integer ano,
+			@RequestHeader(value="Jeaner", defaultValue="foo") String header) {
 		Contrato contrato = contratoService.getContratoByNumeroEAno (numero, ano);
+		System.out.println("============ " + header);
+		
 		return (null == contrato) ? new ResponseEntity<Contrato>(HttpStatus.EXPECTATION_FAILED): new ResponseEntity<Contrato>(contrato, HttpStatus.FOUND);
+	
+		
 	}
 
 	@GetMapping("buscacontratoporobjeto/{objeto}")

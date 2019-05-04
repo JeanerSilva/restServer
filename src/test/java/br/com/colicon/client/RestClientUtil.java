@@ -3,6 +3,8 @@ package br.com.colicon.client;
 import java.net.URI;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+
+import org.hibernate.validator.internal.constraintvalidators.bv.number.sign.PositiveOrZeroValidatorForNumber;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -14,7 +16,7 @@ import br.com.colicon.restservice.entity.Contrato;
 
 public class RestClientUtil {
     
-	public Contrato getContratoByIdDemo(Integer id) {
+	public static Contrato getContratoByIdDemo(Integer id) {
     	HttpHeaders headers = new HttpHeaders();
     	headers.setContentType(MediaType.APPLICATION_JSON);
         RestTemplate restTemplate = new RestTemplate();
@@ -26,9 +28,10 @@ public class RestClientUtil {
     }
 	
 	
-	public Contrato getContratoByNumeroEAno(Integer numero, Integer ano) {
+	public static Contrato getContratoByNumeroEAno(Integer numero, Integer ano) {
 		System.out.println("Início");
     	HttpHeaders headers = new HttpHeaders();
+    	headers.set("Jeaner","ocara");
     	headers.setContentType(MediaType.APPLICATION_JSON);
         RestTemplate restTemplate = new RestTemplate();
 	    String url = "http://localhost:9090/colicon/buscacontrato/numero/{numero}/ano/{ano}";
@@ -38,7 +41,7 @@ public class RestClientUtil {
         return contrato;
     }
 	
-	public void getAllContratosDemo() {
+	public static void getAllContratosDemo() {
 		HttpHeaders headers = new HttpHeaders();
 		headers.setContentType(MediaType.APPLICATION_JSON);
         RestTemplate restTemplate = new RestTemplate();
@@ -106,15 +109,17 @@ public class RestClientUtil {
 	
     public static void main(String args[]) {
     	//System.out.println("teste");
-       // System.out.println("jeaner:" + getContratoByNumeroEAno(2, 2004));
-        //getAllContratosDemo();
+        // System.out.println("jeaner:" + getContratoByNumeroEAno(2, 2004));
+         //getAllContratosDemo();
     	//System.out.println(addContratoDemo());
     	//updateContratoDemo();
     	//System.out.println(getContratoByIdDemo(2));
-    	//Integer c = 2759;
+    	Integer c = 2677;
     	//deleteContratoPorNumeroEAno(333, 100);
-    	//System.out.println(getContratoByIdDemo(c));
-    	deleteContratoDemo(57);
+    	//System.out.println("Contrato:" + getContratoByIdDemo( c));
+    	//deleteContratoDemo(57);
+    	
+    	System.out.println(getContratoByNumeroEAno(2,2004));
         
     }    
 }
