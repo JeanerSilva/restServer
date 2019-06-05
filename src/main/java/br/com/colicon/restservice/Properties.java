@@ -12,6 +12,7 @@ public class Properties {
 	private String roleSystem;
 	@Value("app.admin")
 	private String roleAdmin;
+	
 	public String getTeste() {
 		return teste;
 	}

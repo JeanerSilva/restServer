@@ -1,7 +1,11 @@
 package br.com.colicon.restservice.controller;
+import java.util.Calendar;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import br.com.colicon.restservice.Properties;
 import br.com.colicon.restservice.UserDetails;
 import br.com.colicon.restservice.entity.Contrato;
 import br.com.colicon.restservice.service.IContratoService;
@@ -28,17 +33,24 @@ public class ContratoController {
 	private IContratoService contratoService;
 	
 	@Autowired
-	UserDetails userdetails222;
+	Properties properties;
+
+	
+
 
 	@GetMapping("teste") 
 	@ResponseBody
-	public String teste () {
-		String texto = userdetails222.toString();
-		System.out.println("================== User: " + texto);
+	public String teste () {		
+		Calendar c = Calendar.getInstance();
+		System.out.println("properties: " + properties);
+		UserDetails userDetails = new UserDetails(properties);
+		
+		String texto = userDetails.toString() + "<br /><br /><br />" + "Properties: " + properties+ "<br /><br /><br />"+ c;
+		System.out.println("Iniciando o Main: " + texto);
+		
+		System.out.println("+++getUsers: " + userDetails);
 		return texto;
 	}
-	
-	
 	
 	@GetMapping("buscacontrato/{id}")
 	public ResponseEntity<Contrato> getContratoById(@PathVariable("id") Integer id) {
