@@ -35,9 +35,6 @@ public class ContratoController {
 	@Autowired
 	Properties properties;
 
-	
-
-
 	@GetMapping("teste") 
 	@ResponseBody
 	public String teste () {		

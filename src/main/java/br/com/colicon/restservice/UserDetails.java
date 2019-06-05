@@ -1,8 +1,7 @@
 package br.com.colicon.restservice;
 
-import javax.annotation.PostConstruct;
+import java.util.Calendar;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -13,23 +12,12 @@ public class UserDetails {
 	private String role;
 	UserDetails userDetails;
 	
-	/*
-	@PostConstruct
-	public void getUsers (Properties properties) { 
-		System.out.println("getUsers");
-		this.nome = "nome";
-		this.endereco = "endereco";
-		this.role = properties.getRoleSystem();
-		System.out.println("---post");
-	}
-	*/
-	
 	public UserDetails	(Properties properties) {
-		System.out.println("getUsers");
-		this.nome = "nome";
+		System.out.println("Construtor");
+		Calendar c = Calendar.getInstance();
+		this.nome = c.toString();
 		this.endereco = "endereco";
 		this.role = properties.getRoleSystem();
-		System.out.println("---post");
 	} 
 	
 	
