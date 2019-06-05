@@ -14,7 +14,7 @@ public class UserService {
 		Calendar c = Calendar.getInstance();
 		userDetails.setNome(c.toString());
 		userDetails.setEndereco("endereco");
-		userDetails.setRole(properties.getRoleSystem());
+		userDetails.setRole(properties.getRoleAdmin());
 		this.userDetails = userDetails;
 	} 
 	

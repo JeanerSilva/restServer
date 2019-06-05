@@ -6,11 +6,11 @@ import org.springframework.stereotype.Component;
 @Component
 public class Properties {
 
-	@Value("app.teste")
+	@Value("${app.teste}")
 	private String teste;
-	@Value("app.system")
+	@Value("${app.system}")
 	private String roleSystem;
-	@Value("app.admin")
+	@Value("${app.admin}")
 	private String roleAdmin;
 	
 	public String getTeste() {

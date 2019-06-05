@@ -1,4 +1,6 @@
 package br.com.colicon.restservice.controller;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.List;
 
@@ -44,6 +46,9 @@ public class ContratoController {
 	public String teste () {	
 		// UserService userService = new UserService(); // se usar o new ele cria uma instância a cada vez que o controller for chamado
 		System.out.println("properties: " + properties);
+		List<String> items = Arrays.asList(properties.getRoleAdmin().split("\\s*,\\s*"));
+		items.forEach( i -> System.out.println(i));
+		System.out.println("properties: " + properties.getRoleAdmin());
 		String texto = userService.toString() + "<br /><br /><br />" + "Properties: " + properties+ "<br /><br /><br />";
 		return texto;
 	}
