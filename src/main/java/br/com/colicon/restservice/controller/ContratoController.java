@@ -14,8 +14,10 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import br.com.colicon.restservice.UserDetails;
 import br.com.colicon.restservice.entity.Contrato;
 import br.com.colicon.restservice.service.IContratoService;
 
@@ -24,7 +26,20 @@ import br.com.colicon.restservice.service.IContratoService;
 public class ContratoController {
 	@Autowired
 	private IContratoService contratoService;
+	
+	@Autowired
+	UserDetails userdetails222;
 
+	@GetMapping("teste") 
+	@ResponseBody
+	public String teste () {
+		String texto = userdetails222.toString();
+		System.out.println("================== User: " + texto);
+		return texto;
+	}
+	
+	
+	
 	@GetMapping("buscacontrato/{id}")
 	public ResponseEntity<Contrato> getContratoById(@PathVariable("id") Integer id) {
 		Contrato contrato = contratoService.getContratoById(id);
@@ -39,7 +54,7 @@ public class ContratoController {
 	}
 	
 	///////////////////////////////////////////
-	@GetMapping("buscacontrato/numero/{numero}/ano/{ano}")
+	@PostMapping("buscacontrato/numero/{numero}/ano/{ano}")
 	public ResponseEntity<Contrato> getContratoByNumeroEAno (
 			@PathVariable("numero") Integer numero, 
 			@PathVariable("ano") Integer ano,
@@ -48,13 +63,24 @@ public class ContratoController {
 		System.out.println("============ " + header);
 		
 		return (null == contrato) ? new ResponseEntity<Contrato>(HttpStatus.EXPECTATION_FAILED): new ResponseEntity<Contrato>(contrato, HttpStatus.FOUND);
+	}
 	
-		
+	@PostMapping("teste")
+	@ResponseBody
+	public String teste (			
+			@RequestHeader(value="Jeaner", defaultValue="foo") String header) {
+		String message = "============ " + header;
+		System.out.println(message);
+		return message;
+		//return (null == contrato) ? new ResponseEntity<Contrato>(HttpStatus.EXPECTATION_FAILED): new ResponseEntity<Contrato>(contrato, HttpStatus.FOUND);
 	}
 
+	
+
+	
 	@GetMapping("buscacontratoporobjeto/{objeto}")
 	public ResponseEntity<List<Contrato>> getContratoByNumeroEAno(@PathVariable("objeto") String objeto) {
-		List<Contrato> contratos = contratoService.getContratoByObjeto(objeto);
+	List<Contrato> contratos = contratoService.getContratoByObjeto(objeto);
 		return (null == contratos) ? new ResponseEntity<List<Contrato>>(HttpStatus.EXPECTATION_FAILED): new ResponseEntity<List<Contrato>>(contratos, HttpStatus.FOUND);
 	}
 
