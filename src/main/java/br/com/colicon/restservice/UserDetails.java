@@ -1,26 +1,12 @@
 package br.com.colicon.restservice;
 
-import java.util.Calendar;
-
-import org.springframework.stereotype.Component;
-
-@Component
 public class UserDetails {
 
 	private String nome;
 	private String endereco;
 	private String role;
-	UserDetails userDetails;
 	
-	public UserDetails	(Properties properties) {
-		System.out.println("Construtor");
-		Calendar c = Calendar.getInstance();
-		this.nome = c.toString();
-		this.endereco = "endereco";
-		this.role = properties.getRoleSystem();
-	} 
-	
-	
+
 	public String getNome() {
 		return nome;
 	}

@@ -8,14 +8,18 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import br.com.colicon.restservice.Properties;
 import br.com.colicon.restservice.UserDetails;
+import br.com.colicon.restservice.UserService;
 
 @Controller
 @RequestMapping("colicon")
 public class Segunda {
 	
 	
-	@Autowired
+	//@Autowired
 	UserDetails userDetails;
+	
+	@Autowired
+	UserService userService;
 	
 	@Autowired
 	Properties properties;
@@ -23,7 +27,7 @@ public class Segunda {
 	@GetMapping("teste2") 
 	@ResponseBody
 	public String teste () {
-		String texto = userDetails.toString() + "<br /><br /><br />" + "Properties: " + properties;
+		String texto = userService.toString() + "<br /><br /><br />" + "Properties: " + properties;
 		System.out.println("User na segunda: " + texto);
 		return texto;
 	}

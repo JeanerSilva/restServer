@@ -23,6 +23,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 import br.com.colicon.restservice.Properties;
 import br.com.colicon.restservice.UserDetails;
+import br.com.colicon.restservice.UserService;
 import br.com.colicon.restservice.entity.Contrato;
 import br.com.colicon.restservice.service.IContratoService;
 
@@ -34,18 +35,16 @@ public class ContratoController {
 	
 	@Autowired
 	Properties properties;
+	
+	@Autowired
+	UserService userService;
 
 	@GetMapping("teste") 
 	@ResponseBody
-	public String teste () {		
-		Calendar c = Calendar.getInstance();
+	public String teste () {	
+		// UserService userService = new UserService(); // se usar o new ele cria uma instância a cada vez que o controller for chamado
 		System.out.println("properties: " + properties);
-		UserDetails userDetails = new UserDetails(properties);
-		
-		String texto = userDetails.toString() + "<br /><br /><br />" + "Properties: " + properties+ "<br /><br /><br />"+ c;
-		System.out.println("Iniciando o Main: " + texto);
-		
-		System.out.println("+++getUsers: " + userDetails);
+		String texto = userService.toString() + "<br /><br /><br />" + "Properties: " + properties+ "<br /><br /><br />";
 		return texto;
 	}
 	
